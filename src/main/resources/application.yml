@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Councellor-Enquiry-Portal
+  datasource:
+    url:  jdbc:mysql://localhost:3306/Councellor
+    password: Kunal@123
+    username: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port:  9090
