@@ -7,7 +7,9 @@ import in.kunal.Entity.Enquiry;
 
 public interface EnquiryService {
 	
-	public boolean addEquiry (Integer councellorId);
+	public Enquiry editEnq(Integer EnqId);
+	
+	public boolean addEquiry (Integer councellorId , Enquiry enquiry) throws Exception;
 	
 	public List<Enquiry> getallEnquiry (Integer councellorId);
 	

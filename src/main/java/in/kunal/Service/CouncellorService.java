@@ -10,5 +10,6 @@ public interface CouncellorService {
 	public Councellor login (String email, String password);
 	
 	public DashboardResponse dashboard(Integer councellorId);
-
+	
+	public Councellor duplicateEmailCheck(String email);
 }
