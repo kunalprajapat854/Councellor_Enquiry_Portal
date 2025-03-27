@@ -6,4 +6,6 @@ import in.kunal.Entity.Enquiry;
 
 public interface EnquiryRepo extends JpaRepository<Enquiry, Integer> {
 
+	public Enquiry findByCouncellorId(Integer councellorId);
+
 }
