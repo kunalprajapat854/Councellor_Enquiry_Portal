@@ -7,7 +7,7 @@ import in.kunal.Entity.Councellor;
 
 public interface CouncellorRepo extends JpaRepository<Councellor, Integer> {
 
-	@Query(value = "SELECT * FROM councellor WHERE email:= email AND password:= password", nativeQuery = true)
+	@Query(value = "SELECT * FROM councellor WHERE email= :email AND password= :password", nativeQuery = true)
 	public Councellor findByEmailAndPassword(String email, String password);
 
 	@Query(value = "SELECT * FROM councellor WHERE email:= email", nativeQuery = true)
