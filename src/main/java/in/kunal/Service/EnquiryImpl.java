@@ -42,6 +42,7 @@ public class EnquiryImpl implements EnquiryService {
 		}
 		if (StringUtils.isNotEmpty(enqrequest.getStatus())) {
 			enquiry.setStatus(enqrequest.getStatus());
+			System.out.println(enqrequest.getStatus());
 		}
 
 		Councellor councellor = councellorrepo.findById(councellorId).orElse(null);

@@ -10,7 +10,7 @@ import in.kunal.Entity.Enquiry;
 
 public interface EnquiryRepo extends JpaRepository<Enquiry, Integer> {
 
-	@Query(value = "SELECT * FROM Enquiry WHERE councellorId:= councellorId" ,nativeQuery =  true)
+	@Query(value = "SELECT * FROM Enquiry WHERE councellor_id= :councellorId" ,nativeQuery =  true)
 	public List<Enquiry> findByCouncellorId(Integer councellorId);
 
 }

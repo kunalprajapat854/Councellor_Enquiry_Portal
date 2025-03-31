@@ -18,7 +18,6 @@ public class Councellor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer councellorId;
 	private String name;
-	@Column(unique = true)
 	private String email;
 	private String password;
 	private String phone;

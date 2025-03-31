@@ -65,7 +65,7 @@ public class CouncellorImpl implements CouncellorService {
 	public Councellor duplicateEmailCheck(String email) {
 		Councellor emailcheck = councellorrepo.duplicateEmailCheck(email);
 		if(emailcheck!=null) {
-			return  emailcheck;
+		return  emailcheck;
 		}
 		return null;
 	}
