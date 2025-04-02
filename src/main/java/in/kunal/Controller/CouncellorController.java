@@ -37,13 +37,7 @@ public class CouncellorController {
 			return "index";
 
 		} else {
-
-			HttpSession session = request.getSession(true);
-			session.setAttribute("councellorId", login.getCouncellorId());
-
-			DashboardResponse dashboardResponse = councellorservice.dashboard(login.getCouncellorId());
-			model.addAttribute("dashboardobj", dashboardResponse);
-			return "dashboard";
+			return "redirect:/dashboard";
 		}
 		
 	}
@@ -67,7 +61,7 @@ public class CouncellorController {
 		boolean register = councellorservice.register(councellor);
 		if(register) {
 			model.addAttribute("smsg", "Registration Success");
-			return "dashboard";
+			return "redirect:/dashboard";
 		} else {
 			model.addAttribute("emsg", "Registration Failed");
 		}
@@ -79,6 +73,16 @@ public class CouncellorController {
 		HttpSession session = request.getSession(false);
 		session.invalidate();
 		return "redirect:/";
+	}
+	
+	@GetMapping("/dashboard")
+	public String showdashboard(HttpServletRequest request , Councellor councellor , Model model) {
+		HttpSession session = request.getSession(true);
+		session.setAttribute("councellorId", councellor.getCouncellorId());
+		DashboardResponse dashboardResponse = councellorservice.dashboard(councellor.getCouncellorId());
+		model.addAttribute("dashboardobj", dashboardResponse);
+		return "dashboard";
+		
 	}
 
 }

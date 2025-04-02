@@ -9,11 +9,20 @@
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-
 <body>
 	<div class="container">
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/dashboard">Dashboard</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">View Enquiry</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/logout">Logout</a>
+			</li>
+		</ul>
 		<h2>Add Enquiry</h2>
-
 
 		<font style="color: red;">
 			<p th:text="${emsg}"></p>
@@ -26,46 +35,52 @@
 		<form th:action="@{/enquiry}" th:object="${enquiry}" method="post">
 			<table>
 				<tr>
-					<td>Name</td>
+					<td>Name:</td>
 					<td><input type="text" th:field="*{name}" required></td>
 				</tr>
 				<tr>
-					<td>Phone</td>
+					<td>Phone:</td>
 					<td><input type="number" th:field="*{phone}" required></td>
 				</tr>
-				<!--<tr>
+				<tr>
 					<td>Class Mode:</td>
-					<select th:field="*{classMode}">
-						<option>-Select-</option>
-						<option>Online</option>
-						<option>Offline</option>
-					</select>
+					<td>
+						<select th:field="*{classMode}">
+							<option value="">-Select-</option>
+							<option value="Online">Online</option>
+							<option value="Offline">Offline</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>Course:</td>
-					<select th:field="*{course}">
-						<option>-Select-</option>
-						<option>Java</option>
-						<option>Python</option>
-						<option value="AWS">Aws</option>
-					</select>
+					<td>
+						<select th:field="*{course}">
+							<option value="">-Select-</option>
+							<option value="Java">Java</option>
+							<option value="Python">Python</option>
+							<option value="AWS">AWS</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>Status:</td>
-					<select th:field="*{status}">
-						<option>-Select-</option>
-						<option>Open</option>
-						<option>Lost</option>
-						<option>Enrolled</option>
-					</select>
-				</tr>-->
+					<td>
+						<select th:field="*{status}">
+							<option value="">-Select-</option>
+							<option value="Open">Open</option>
+							<option value="Lost">Lost</option>
+							<option value="Enrolled">Enrolled</option>
+						</select>
+					</td>
+				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Submit" class="btn btn-link"></td>
+					<td><input type="submit" value="Submit" class="btn btn-primary"></td>
 				</tr>
 			</table>
 		</form>
-		<a href="/" class="btn btn-link">Login here </a>
+		<a href="/" class="btn btn-link">Login here</a>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -7,6 +7,9 @@ public class DashboardResponse {
 	private Integer enrollEnq;
 	private Integer lostEnq;
 
+	public DashboardResponse() {
+	}
+
 	public Integer getTotalEnq() {
 		return totalEnq;
 	}

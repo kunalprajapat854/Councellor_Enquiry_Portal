@@ -1,13 +1,12 @@
 package in.kunal.Controller;
 
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import in.kunal.Entity.Enquiry;
-import in.kunal.Service.CouncellorService;
 import in.kunal.Service.EnquiryService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -16,13 +15,11 @@ import jakarta.servlet.http.HttpSession;
 public class EnquiryController {
 
 	private EnquiryService enquiryservice;
-	private CouncellorService councellorservice;
 
 	// constructor injection
-	public EnquiryController(EnquiryService enquiryservice, CouncellorService councellorservice) {
+	public EnquiryController(EnquiryService enquiryservice) {
 		super();
 		this.enquiryservice = enquiryservice;
-		this.councellorservice = councellorservice;
 	}
 
 	@GetMapping("/enquiry")
@@ -35,13 +32,14 @@ public class EnquiryController {
 	@PostMapping("/enquiry")
 	public String handleAddEnq(Model model, Enquiry enquiry, HttpServletRequest request) throws Exception {
 
-		//get the existing councellor Id for the session 
+		// get the existing councellor Id for the session
 		HttpSession session = request.getSession(false);
 		Integer councellorId = (Integer) session.getAttribute("councellorId");
-		
-		boolean enq = enquiryservice.addEquiry(councellorId, enquiry);
-		if(enq) {
-			model.addAttribute("smsg", "Equiry Added");
+
+ 	    boolean enq = enquiryservice.addEquiry(councellorId, enquiry);
+ 	    System.out.println(enq + "councellorID");
+		if (enq) {
+	    	model.addAttribute("smsg", "Equiry Added");
 		} else {
 			model.addAttribute("emsg", "Enquiry Not Added");
 		}
