@@ -37,6 +37,9 @@ public class CouncellorController {
 			return "index";
 
 		} else {
+			HttpSession session = request.getSession(true);
+			session.setAttribute("councellorId", login.getCouncellorId());
+			System.out.println("councellorId" + login.getCouncellorId());
 			return "redirect:/dashboard";
 		}
 		
@@ -77,9 +80,12 @@ public class CouncellorController {
 	
 	@GetMapping("/dashboard")
 	public String showdashboard(HttpServletRequest request , Councellor councellor , Model model) {
-		HttpSession session = request.getSession(true);
-		session.setAttribute("councellorId", councellor.getCouncellorId());
-		DashboardResponse dashboardResponse = councellorservice.dashboard(councellor.getCouncellorId());
+		HttpSession session = request.getSession(false);
+		Integer councellorId = (Integer)session.getAttribute("councellorId");
+		
+		DashboardResponse dashboardResponse = councellorservice.dashboard(councellorId);
+		System.out.println("Counsellor ID set in session: " + councellor.getCouncellorId());
+
 		model.addAttribute("dashboardobj", dashboardResponse);
 		return "dashboard";
 		
