@@ -2,7 +2,7 @@ package in.kunal.Service;
 
 import java.util.List;
 
-import in.kunal.Binding.ViewEnqResquest;
+import in.kunal.Binding.ViewEnqRequest;
 import in.kunal.Entity.Enquiry;
 
 public interface EnquiryService {
@@ -13,6 +13,6 @@ public interface EnquiryService {
 	
 	public List<Enquiry> getallEnquiry (Integer councellorId);
 	
-	public List<Enquiry> viewenqrequest(ViewEnqResquest enqResquest , Integer councellorId);
+	public List<Enquiry> viewenqrequest(ViewEnqRequest enqResquest , Integer councellorId);
 
 }

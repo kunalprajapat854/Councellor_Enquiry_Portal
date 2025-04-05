@@ -1,6 +1,6 @@
 package in.kunal.Binding;
 
-public class ViewEnqResquest {
+public class ViewEnqRequest {
 
 	private String name;
 	private String phone;

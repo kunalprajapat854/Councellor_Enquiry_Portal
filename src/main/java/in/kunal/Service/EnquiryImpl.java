@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-import in.kunal.Binding.ViewEnqResquest;
+import in.kunal.Binding.ViewEnqRequest;
 import in.kunal.Entity.Councellor;
 import in.kunal.Entity.Enquiry;
 import in.kunal.Repository.CouncellorRepo;
@@ -29,7 +29,7 @@ public class EnquiryImpl implements EnquiryService {
 
 	}
 
-	public List<Enquiry> viewenqrequest(ViewEnqResquest enqrequest, Integer councellorId) {
+	public List<Enquiry> viewenqrequest(ViewEnqRequest enqrequest, Integer councellorId) {
 //		QBE implementation
 		Enquiry enquiry = new Enquiry();
 

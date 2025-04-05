@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ViewEnq</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/dashboard">Dashboard</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/viewEnq">View Enquiry</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/enquiry">Add Enquiry</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/logout">Logout</a>
+			</li>
+		</ul>
+		<hr>
+		<form th:action="@{/filter-enq}" th:object="${enqResquest}" method="post">
+			<table>
+				<tr>
+					ClassMode: <select th:field="*{classMode}">
+						<option value="">-Select-</option>
+						<option value="Online">Online</option>
+						<option value="Offline">Offline</option>
+					</select>
+
+					Course: <select th:field="*{course}">
+						<option value="">-Select-</option>
+						<option value="Java">Java</option>
+						<option value="Python">Python</option>
+						<option value="Aws">Aws</option>
+					</select>
+
+					Status: <select th:field="*{status}">
+						<option value="">-Select-</option>
+						<option value="Open">Open</option>
+						<option value="Lost">Lost</option>
+						<option value="Enrolled">Enrolled</option>
+					</select>
+					
+				<input type="submit" value="Search" class="btn btn-primary">
+
+				</tr>
+
+			</table>
+		</form>
+		<h1>View Enquiry</h1>
+		<table class="table table-striped">
+			<thead>
+				<th>S.No</th>
+				<th>Name</th>
+				<th>Phone</th>
+				<th>CourseName</th>
+				<th>ClassMode</th>
+				<th>Status</th>
+				<th>Action</th>
+			</thead>
+			<tbody>
+				<tr th:each="enq: ${enqlist}">
+					<th th:text="${enq.enquiryId}"></th>
+					<th th:text="${enq.name}"></th>
+					<th th:text="${enq.phone}"></th>
+					<th th:text="${enq.course}"></th>
+					<th th:text="${enq.classMode}"></th>
+					<th th:text="${enq.status}"></th>
+					<th>
+						<a href="#" class="btn btn-link">Edit</a>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
