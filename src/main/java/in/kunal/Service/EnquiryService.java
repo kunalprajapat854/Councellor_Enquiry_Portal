@@ -13,6 +13,6 @@ public interface EnquiryService {
 	
 	public List<Enquiry> getallEnquiry (Integer councellorId);
 	
-	public List<Enquiry> viewenqrequest(ViewEnqRequest enqResquest , Integer councellorId);
+	public List<Enquiry> viewenqrequest(ViewEnqRequest enqRequest , Integer councellorId);
 
 }

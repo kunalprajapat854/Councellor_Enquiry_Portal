@@ -14,7 +14,7 @@ public class Enquiry {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer enquiryId;
-	@Column(unique = true)
+	
 	private String name;
 	@Column(length = 10)
 	private String phone;

@@ -2,12 +2,13 @@ package in.kunal.Controller;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import in.kunal.Binding.ViewEnqRequest;
 import in.kunal.Entity.Enquiry;
@@ -63,21 +64,31 @@ public class EnquiryController {
 		
 		
 		//  view enqrequest binding class.
-		ViewEnqRequest enqResquest = new ViewEnqRequest();
-		model.addAttribute("enqResquest", enqResquest);
+		ViewEnqRequest   filterReq = new ViewEnqRequest();
+		model.addAttribute("viewEnqFilter", filterReq);
 		return "viewEnq";
 	}
 	
 	@PostMapping("/filter-enq")
-	public String enqfilterReq(Model model , ViewEnqRequest enqResquest , HttpServletRequest request) {
+	public String filterEnquries(HttpServletRequest request , Model model , ViewEnqRequest viewEnqFilter) {
 		HttpSession session = request.getSession(false);
 		Integer councellorId = (Integer)session.getAttribute("councellorId");
-		System.out.println("councellorId" + councellorId);
+		System.out.println(councellorId);
 		
-		List<Enquiry> enquiryrequestList = enquiryservice.viewenqrequest(enqResquest, councellorId);
-		model.addAttribute("filterequiry", enquiryrequestList);
-		model.addAttribute("enqResquest", new ViewEnqRequest());
+		List<Enquiry>  enqslist = enquiryservice.viewenqrequest(viewEnqFilter, councellorId);
+		model.addAttribute("enqlist", enqslist);
+		model.addAttribute("viewEnqFilter", new ViewEnqRequest());
+
 		return "viewEnq";
 	}
+	
+	@GetMapping("/editEnq")
+	public String editEnq(Model model , @RequestParam("enqId") Integer enqId) {
+		Enquiry editEnq = enquiryservice.editEnq(enqId);
+		model.addAttribute("enquiry", editEnq);
+		return "enquiry";
+	}
+	
+	
 
 }

@@ -8,6 +8,9 @@ public class ViewEnqRequest {
 	private String course;
 	private String status;
 
+	public ViewEnqRequest() {
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -1,6 +1,7 @@
 package in.kunal.Service;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.data.domain.Example;
@@ -42,7 +43,6 @@ public class EnquiryImpl implements EnquiryService {
 		}
 		if (StringUtils.isNotEmpty(enqrequest.getStatus())) {
 			enquiry.setStatus(enqrequest.getStatus());
-			System.out.println(enqrequest.getStatus());
 		}
 
 		Councellor councellor = councellorrepo.findById(councellorId).orElse(null);
