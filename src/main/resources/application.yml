@@ -3,14 +3,16 @@ spring:
     name: Councellor-Enquiry-Portal
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url:  jdbc:mysql://mysqldb:3306/Councellor?useSSL=false&allowPublicKeyRetrieval=true
-    password: root
-    username: root  
+    url: jdbc:mysql://mysqldb:3306/Councellor?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root  
   jpa:
     hibernate:
       ddl-auto: update
     open-in-view: true
     properties:
-      hibernate: org.hibernate.dialect.MySQLDialect      
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+      
 server:
-  port:  9090 
+  port: 9090
