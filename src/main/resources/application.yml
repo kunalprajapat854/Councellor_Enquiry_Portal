@@ -2,9 +2,10 @@ spring:
   application:
     name: Councellor-Enquiry-Portal
   datasource:
-    url:  jdbc:mysql://mysqldb:3306/Councellor
+    url:  jdbc:mysql://mysqldb:3306/Councellor?useSSL=false&allowPublicKeyRetrieval=true
     password: root
-    username: root
+    username: root    
+    
   jpa:
     show-sql: true
     hibernate:
