@@ -1,0 +1,29 @@
+version: "3"
+services:
+ application:
+  image: Councellor-Enquiry-Portal
+  ports:
+  - 9090:8080
+  networks:
+  - councellor-network
+  depends_on:
+  - mysqldb
+  volumes:
+  - /data/councellor-app
+  
+  
+ mysqldb:
+  image: mysql:5.7
+  networks:
+  - councellor-network
+  
+  environment:
+  - MYSQL_ROOT_PASSWORD=root
+  - MYSQL_DATABASE = councellor
+  
+  volumes:
+    - /data/mysql
+
+networks:
+ councellor-network:
+
