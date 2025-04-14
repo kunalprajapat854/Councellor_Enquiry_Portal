@@ -8,8 +8,7 @@ services:
     networks:
       - councellor-network
     depends_on:
-      mysqldb:
-        condition: service_healthy
+          - mysqldb
     volumes:
       - /data/councellor-app
 
@@ -24,11 +23,7 @@ services:
       - councellor-network
     volumes:
       - /data/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+   
 
 networks:
   councellor-network:
