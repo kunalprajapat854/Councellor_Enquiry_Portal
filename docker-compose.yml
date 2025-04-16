@@ -2,16 +2,20 @@ version: "3.7"
 services:
   application:
     image: Councellor-Enquiry-Portal
-    ports:
-      - 9090:9090
     networks:
       - councellor-network
-    depends_on:
-      - mysqldb
+ 
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/Councellor
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
+
+     depends_on:
+      - mysqldb
+
+       ports:
+      - 9090:9090
+      
     volumes:
       - councellor-app-data:/data/councellor-app
 
@@ -19,11 +23,14 @@ services:
     image: mysql:8.0.33
     networks:
       - councellor-network
-    ports:
-      - "3306:3306"
-    environment:
+      
+       environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=Councellor
+      
+    ports:
+      - "3306:3306"
+   
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
