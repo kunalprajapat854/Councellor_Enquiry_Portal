@@ -1,14 +1,20 @@
 version: "3.7"
-
 services:
   application:
     image: Councellor-Enquiry-Portal
+<<<<<<< HEAD
     depends_on:
       - mysqldb
+=======
+    networks:
+      - councellor-network
+ 
+>>>>>>> bfc6f6d03661d86bf5010a0d523a6fabbf42b410
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/Councellor
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
+<<<<<<< HEAD
       
     ports:
       - 9090:9090
@@ -16,21 +22,44 @@ services:
       - councellor-app-data:/data/councellor-app
     networks:
      - councellor-network
+=======
+
+     depends_on:
+      - mysqldb
+
+       ports:
+      - 9090:9090
+      
+    volumes:
+      - councellor-app-data:/data/councellor-app
+>>>>>>> bfc6f6d03661d86bf5010a0d523a6fabbf42b410
 
   mysqldb:
     image: mysql:8.0.33
     networks:
       - councellor-network
+<<<<<<< HEAD
    
     environment:
+=======
+      
+       environment:
+>>>>>>> bfc6f6d03661d86bf5010a0d523a6fabbf42b410
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=Councellor
       
     ports:
+<<<<<<< HEAD
       - "3306:3306" 
     volumes:
       - mysql-data:/var/lib/mysql
       
+=======
+      - "3306:3306"
+   
+    volumes:
+      - mysql-data:/var/lib/mysql
+>>>>>>> bfc6f6d03661d86bf5010a0d523a6fabbf42b410
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
