@@ -2,7 +2,9 @@ version: "3.7"
 
 services:
   application:
-    image: councellor-enquiry-portal
+    image: Councellor-Enquiry-Portal
+    build: .  # ensures Docker builds the image from Dockerfile
+    container_name: counsellor-app
     networks:
       - councellor-network
     depends_on:
@@ -11,21 +13,19 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/Councellor
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
-      
     ports:
-      - 9090:9090
+      - "9090:9090"
     volumes:
       - councellor-app-data:/data/councellor-app
 
   mysqldb:
     image: mysql:8.0.33
+    container_name: mysqldb
     networks:
       - councellor-network
-   
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=Councellor
-      
     ports:
       - "3306:3306"
     volumes:
