@@ -1,44 +1,32 @@
 version: "3.7"
-
 services:
   application:
-    image: Councellor-Enquiry-Portal
-    build: .  # ensures Docker builds the image from Dockerfile
-    container_name: counsellor-app
+    image: councellor-enquiry-portal
+    build: .
+    restart: always
+    ports:
+      - 8085:9090
     networks:
-      - councellor-network
+      - springapimysql-net
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/basics?allowPublicKeyRetrieval=true    
     depends_on:
       - mysqldb
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/Councellor
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-    ports:
-      - "9090:9090"
+    
     volumes:
-      - councellor-app-data:/data/councellor-app
-
+      - .m2:/root/.m2
+      
   mysqldb:
-    image: mysql:8.0.33
-    container_name: mysqldb
-    networks:
-      - councellor-network
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=Councellor
+    image: "mysql:8.0"
+    restart: always
     ports:
-      - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
+      - 3306:3306
+    networks:
+      - springapimysql-net  
+    environment:
+      MYSQL_DATABASE: basics
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Kunal@123
+      MYSQL_ROOT_PASSWORD: Kunal@123
 networks:
-  councellor-network:
-
-volumes:
-  mysql-data:
-  councellor-app-data:
+  springapimysql-net:
