@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   application:
-    image: Councellor-Enquiry-Portal
+    image: councellor-enquiry-portal
     networks:
       - councellor-network
     depends_on:

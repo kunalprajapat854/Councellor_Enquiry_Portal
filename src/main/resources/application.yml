@@ -3,9 +3,9 @@ spring:
     name: Councellor-Enquiry-Portal
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysqldb:3306/Councellor?useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: root  
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
