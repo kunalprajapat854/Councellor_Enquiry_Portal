@@ -5,27 +5,27 @@ services:
     build: .
     restart: always
     ports:
-      - 8085:9090
+      - 9090:9090
     networks:
       - springapimysql-net
     environment:
-      - spring.datasource.url=jdbc:mysql://mysqldb:3306/basics?allowPublicKeyRetrieval=true    
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/basics?allowPublicKeyRetrieval=true
     depends_on:
-      - mysqldb
-    
+      - mysql
+
     volumes:
       - .m2:/root/.m2
-      
-  mysqldb:
+
+  mysql:
     image: "mysql:8.0"
     restart: always
     ports:
-      - 3306:3306
+      - 3307:3306
     networks:
-      - springapimysql-net  
+      - springapimysql-net
     environment:
       MYSQL_DATABASE: basics
-      MYSQL_USER: root
+      #MYSQL_USER: root
       MYSQL_PASSWORD: Kunal@123
       MYSQL_ROOT_PASSWORD: Kunal@123
 networks:
